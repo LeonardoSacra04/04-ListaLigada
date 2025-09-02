@@ -128,6 +128,13 @@ void inserirElemento()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
+	NO* ExisteValor = posicaoElemento(novo->valor);
+	if (ExisteValor != NULL)
+	{
+		cout << "O elemento ja existe" << endl;
+		return;
+	};
+
 	if (primeiro == NULL)
 	{
 		primeiro = novo;
@@ -145,12 +152,44 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	NO* atual = primeiro;
+	NO* ant = NULL;
+	int del;
+
+	cout << "Qual elemento vai ser deletado" << endl;
+	cin >> del;
+	NO* buscar = posicaoElemento(del);
+
+	if (buscar != NULL)
+	{
+		while (atual->valor != del)
+		{
+			ant = atual;
+			atual = atual->prox;
+		};
+
+	}
+	else
+	{
+		cout << "elemento nao encontrado" << endl;
+	}
 }
 
 void buscarElemento()
 {
-	
+	int busca;
+	cout << "Digite o elemento a ser buscado" << endl;
+	cin >> busca;
+	NO* buscar = posicaoElemento(busca);
+
+	if (buscar != NULL)
+	{
+		cout << "elemento encontrado " << endl;
+	}
+	else
+	{
+		cout << "elemento nao encontrado" << endl;
+	}
 }
 
 
