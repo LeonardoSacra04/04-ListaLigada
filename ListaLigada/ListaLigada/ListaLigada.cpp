@@ -156,22 +156,41 @@ void excluirElemento()
 	NO* ant = NULL;
 	int del;
 
+	if (primeiro == NULL)
+	{
+		cout << "Sem elementos na lista" << endl;
+		return;
+	}
+
 	cout << "Qual elemento vai ser deletado" << endl;
 	cin >> del;
 	NO* buscar = posicaoElemento(del);
 
-	if (buscar != NULL)
+	if (buscar == NULL)
 	{
-		while (atual->valor != del)
-		{
-			ant = atual;
-			atual = atual->prox;
-		};
-
+		cout << "Elemento nao existe na lista" << endl;
 	}
 	else
 	{
-		cout << "elemento nao encontrado" << endl;
+		while (buscar != NULL)
+		{
+			if (del == atual->valor)
+			{
+				if (del == primeiro->valor)
+				{
+					primeiro = atual->prox;
+				}
+				else
+				{
+					ant->prox = atual->prox;
+				}
+				free(atual);
+				cout << "O elemento " << del << " foi deletado" << endl;
+				break;
+			}
+			ant = atual;
+			atual = atual->prox;
+		}
 	}
 }
 
