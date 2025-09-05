@@ -19,6 +19,7 @@ void inserirElemento();
 void excluirElemento();
 void buscarElemento();
 NO* posicaoElemento(int numero);
+int ordem(int numero);
 //--------------------------
 
 int main()
@@ -167,7 +168,7 @@ void excluirElemento()
 
 	if (buscar == NULL)
 	{
-		cout << "Elemento nao existe na lista" << endl;
+		cout << "Elemento inexistente na lista" << endl;
 	}
 	else
 	{
@@ -193,19 +194,6 @@ void excluirElemento()
 	}
 }
 
-int ordem(int numero)
-	{
-		NO* indicador = primeiro;
-		int cont = 1;
-
-		while (indicador != posicaoElemento(numero))
-		{
-			indicador = indicador->prox;
-			cont++;
-		}
-		return cont;
-	}
-
 void buscarElemento()
 {
 	int busca;
@@ -216,11 +204,11 @@ void buscarElemento()
 	if (buscar != NULL)
 	{
 		int pos = ordem(busca);
-		cout << "elemento encontrado na posicao " << pos << endl;
+		cout << "Elemento encontrado na posicao " << pos << endl;
 	}
 	else
 	{
-		cout << "elemento nao encontrado" << endl;
+		cout << "Elemento nao encontrado" << endl;
 	}
 }
 
@@ -237,4 +225,19 @@ NO* posicaoElemento(int numero)
 		aux = aux->prox;
 	}
 	return aux;
+}
+
+// descobre a posição de um elemento 
+// de forma mais clara para o usuário
+int ordem(int numero)
+{
+	NO* indicador = primeiro;
+	int cont = 1;
+
+	while (indicador != posicaoElemento(numero))
+	{
+		indicador = indicador->prox;
+		cont++;
+	}
+	return cont;
 }
