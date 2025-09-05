@@ -21,7 +21,6 @@ void buscarElemento();
 NO* posicaoElemento(int numero);
 //--------------------------
 
-
 int main()
 {
 	menu();
@@ -194,6 +193,19 @@ void excluirElemento()
 	}
 }
 
+int ordem(int numero)
+	{
+		NO* indicador = primeiro;
+		int cont = 1;
+
+		while (indicador != posicaoElemento(numero))
+		{
+			indicador = indicador->prox;
+			cont++;
+		}
+		return cont;
+	}
+
 void buscarElemento()
 {
 	int busca;
@@ -203,15 +215,14 @@ void buscarElemento()
 
 	if (buscar != NULL)
 	{
-		cout << "elemento encontrado " << endl;
+		int pos = ordem(busca);
+		cout << "elemento encontrado na posicao " << pos << endl;
 	}
 	else
 	{
 		cout << "elemento nao encontrado" << endl;
 	}
 }
-
-
 
 // retorna um ponteiro para o elemento buscado
 // ou NULL se o elemento não estiver na lista
